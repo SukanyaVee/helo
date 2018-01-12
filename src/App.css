@@ -1,11 +1,17 @@
 /* ------------------------HOME PAGE----------------  */
-
+* {
+  /* height: 100%; */
+  box-sizing: border-box;
+  margin: auto;
+  font-family:  sans-serif;
+}
 .App-home {
   background-image: linear-gradient(99deg, #ff70a6, #ff9770 40%, #ffd670 73%, #e9ff70);
   box-sizing: border-box;
   text-align: center;
-  width: 100%vw;
-  height: 100%vh;
+  width: 100%;
+  height: 100%;
+  margin: auto;
   color: white;
   display: flex;
   justify-content: center;
@@ -14,7 +20,8 @@
 
 .App-logo {
   /* animation: App-logo-spin infinite 20s linear; */
-  /* height: 80px; */
+  height: 80px;
+  margin: 20px;
 }
 
 .Home-splash {
@@ -25,18 +32,42 @@
   }
 
 /* -----------------------------DASHBOARD---------------------- */
+
+.App-inside {
+  text-align: center;
+  color: black;
+  background-color: #eeeeee;
+}
+
 .Inside-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+  height: 50px;
+  padding: 10px;
   color: white;
   background-image: linear-gradient(97deg, #ff7a6e, #ff9770);
   box-shadow: 0 10px 20px 0 rgba(0,0,0,0.1), 0 6px 6px 0 rgba(0,0,0,0.2);
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .App-title {
   font-size: 1.5em;
+}
+
+.App-icons {
+  /* animation: App-logo-spin infinite 20s linear; */
+  height: 20px;
+  margin-left: 10px;
+}
+
+.top-box {
+  display: flex;
+  margin: 30px;
+}
+
+.bottom-box{
+  padding: 20px;
+  width: 800px;
 }
 
 .button-white {
