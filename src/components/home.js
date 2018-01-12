@@ -13,34 +13,37 @@ class Home extends Component {
         this.login = this.login.bind(this);
       }
     
-      componentDidMount() {
-        this.lock = new Auth0Lock(process.env.REACT_APP_AUTH0_CLIENT_ID, process.env.REACT_APP_AUTH0_DOMAIN);
-        console.log('this.lock', this.lock);
-        // this.lock.on('authenticated', authResult => {
-        //   this.lock.getUserInfo(authResult.accessToken, (error, user) => {
-        //     axios.post('/login', { userId: user.sub }).then(response => {
-        //       this.props.login(response.data.user);
-        //       this.props.history.push('/private');
-        //     }) 
-        //   })
-        // })
-      }
+    // componentDidMount() {
+    //     this.lock = new Auth0Lock('pqNfBTAqBLOOhqSR8F57fnhJSSW2jcGO' , 'auth0-mini.auth0.com');
+    //     console.log('this Auth0lock');
+    //     this.lock.on('authenticated', authResult => {
+    //       this.lock.getUserInfo(authResult.accessToken, (error, user) => {
+    //         axios.post('/api/auth/login', { userId: user.sub }).then(response => {
+    //           this.props.login(response.data.user);
+    //           this.props.history.push('/dashboard');
+    //         }).catch(err=>{console.log(err)})
+    //       })
+    //     })
+    //   }
     
-      login() {
-        this.lock.show();
-      }
-  render() {
-    return (
-     
-        <div className="App-home">
-          <div className="Home-splash">
-            <div className="App-logo"><img src={logo} alt="logo"/></div>
-            <div>Helo</div>
-            <button className="button-black" onClick={this.login}>Login/Register</button>
-          </div>
-        </div>
-    );
-  }
+    login() {
+        // this.lock.show();
+        this.props.history.push('/login');
+        
+
+    }
+
+    render() {
+        return (
+            <div className="App-home">
+            <div className="Home-splash">
+                <div className="App-logo"><img src={logo} alt="logo"/></div>
+                <div>Helo</div>
+                <button className="button-black" onClick={this.login}>Login/Register</button>
+            </div>
+            </div>
+        );
+    }
 }
 
 const mapDispatchToProps = {

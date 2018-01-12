@@ -1,5 +1,9 @@
 const initialState = {
-    user: null
+    user: {
+      name: 'Donald Trump',
+      pic: 'https://upload.wikimedia.org/wikipedia/commons/b/bb/Official_Portrait_of_President_Donald_Trump.jpg'
+
+    }
   };
   
   const LOGIN = 'LOGIN';

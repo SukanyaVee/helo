@@ -4,21 +4,28 @@ import searchP from './search.png';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import {login} from '../ducks/reducer'
-// import Logout from './Logout'
-import {Link} from 'react-router-dom';
 
 
-class Dashboard extends Component {
-    componentDidMount() {
-        axios.get('/user-data').then(response => {
-          if (response.data.user) {
+class Login extends Component {
+
+    constructor(){
+        super()
+        this.state = {
+            username: '',
+            password: ''
+        }
+        this.login = this.login.bind(this)
+    }
+
+    login(){
+        axios.post('/api/auth/login', this.state.username).then(response => {
             this.props.login(response.data.user);
-          }
-        });
-      }
+            this.props.history.push('/dashboard');
+        })
+        
+    }
 
   render() {
-      const logout = 'logout'
     return (
       <div className="App-inside">
         <header className="Inside-header">
@@ -28,18 +35,12 @@ class Dashboard extends Component {
           <img src={searchP}  alt="Search"  className="App-icons"/>
         </div>
           <h5>Dashboard</h5>
-          <h6><Link to="/logout/:logout">Logout {logout}</Link></h6>
+          <h6>Logout</h6>
         </header>
         <div className="top-box">
-            <div className="content-div">
-            <div><img src={this.props.user.pic} alt="profile"/></div>
-            {this.props.user.name}
-            </div>
-            <div className="content-div"> blah blah blah
-            </div>
-        </div>
-        <div className="bottom-box">
-            Recommended Friends
+            <input onChange={event=>{this.setState({username: event.target.value})}}/>
+            <input onChange={event=>{this.setState({password: event.target.value})}}/>
+            <button onClick={this.login}>Login</button>
         </div>
       </div>
     );
@@ -56,4 +57,4 @@ function mapStateToProps(state) {
     login: login,
   }
   
-  export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+  export default connect(mapStateToProps, mapDispatchToProps)(Login);
